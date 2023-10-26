@@ -1,21 +1,21 @@
 {
-  "name": "parcel-project-template",
+  "name": "Film-Trend",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://goitacademy.github.io/parcel-project-template",
+  "homepage": "https://StivenAguirre.github.io/Film-Trend",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /Film-Trend/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+    "url": "git+https://github.com/StivenAguirre/Film-Trend.git"
   },
   "keywords": [],
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "https://github.com/StivenAguirre/Film-Trend/issues"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0"
