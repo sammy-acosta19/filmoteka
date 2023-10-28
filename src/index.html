@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Film Trend</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <link rel="stylesheet" href="./sass/index.scss" />
     <link rel="shortcut icon" href="./images/filmtrendpng.png" type="image/x-icon">
@@ -11,46 +14,65 @@
   </head>
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <div class="container">
       <header class="flex-header">
-        <a class="" href="./index.html"><svg class="" width="24" height="24">
-            <use href="./images/icoms.svg#icon-film"></use></svg>Filmoteka</a>
-        <nav>
-          <a href="./index.html">HOME</a>
-          <a href="./mylibrary.html">MY LIBRARY</a>
-        </nav>
-      </header>
-       <div>
-          <input type="text" class="" placeholder="Buscar..." >
-         <svg class="" width="12" height="12">
-            <use href="./images/icoms.svg#icon-lupa"></use></svg>
+        <div class="container">
+          <div class="flex-header__container">
+            <a class="flex-header__container--logo" href="./index.html">
+              <svg class="flex-header__svg" width="24" height="24">
+                <use href="./images/icoms.svg#icon-film"></use>
+              </svg>
+              <h1>Filmoteka</h1>
+            </a>
+            <nav class="flex-nav">
+              <ul class="flex-nav__container">
+                <li class="active"><a href="./index.html">HOME</a></li>
+                <li><a href="./mylibrary.html">MY LIBRARY</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="search-container">
+            <input type="text" class="search-container__input" placeholder="Buscar..." >
+            <a href="">
+              <svg class="search-container__svg" width="12" height="12">
+                 <use href="./images/icoms.svg#icon-lupa"></use>
+              </svg>
+            </a>
+         </div>
         </div>
-      <main>
+      </header>
+      <main class="container">
         <ul>
-        <li>este es el main</li>
-        <li>en esta parte agregaremos las peliculas </li>
-        <li>con javascript</li>
+          <li>este es el main</li>
+          <li>en esta parte agregaremos las peliculas </li>
+          <li>con javascript</li>
         </ul>
       </main>
-      <section>
-    <div class="pagination">
-    <a href="#">&laquo;</a> 
-    <a href="#">1</a> 
-    <a href="#">2</a> 
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
-    <a href="#">&raquo;</a> 
+      <section class="container">
+        <div class="pagination">
+          <ul class="pagination-container">
+            <li class="pagination-container__item next-arrow-background"><a href="#">&laquo;</a></li>
+            <li class="pagination-container__item"><a href="#">1</a></li>
+            <li class="pagination-container__item"><a href="#">2</a></li>
+            <li class="pagination-container__item button-active"><a href="#">3</a></li>
+            <li class="pagination-container__item"><a href="#">4</a></li>
+            <li class="pagination-container__item"><a href="#">5</a></li>
+            <li class="pagination-container__item next-arrow-background"><a href="#">&raquo;</a> </li>
+          </ul>
         </div>
       </section>
-      <footer>
-        <div>
+      <footer class="footer-container">
+        <div class="container footer-container__flex">
           <h3>&copy  2020 | All Rights Reserved | Developed with </h3>
-          <a class="" href="./index.html"><svg class="" width="14" height="12.88">
-            <use href="./images/icoms.svg#icon-corazon"></use></svg>by GoIT Students</a>
+          <a class="footer-link" href="./index.html">
+            <svg class="footer-link__svg" width="14" height="12.88">
+              <use href="./images/icoms.svg#icon-corazon"></use>
+            </svg>by<span> GoIT Students</span> 
+          </a>
         </div>
       </footer>
     </div>
     <include src="./partials/example.html"></include>
+    <!--<include src="./partials/example.html"></include>-->
+    <script src="./index.js"></script>
   </body>
 </html>

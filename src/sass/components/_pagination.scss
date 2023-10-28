@@ -1,0 +1,17 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  //column-gap: 16px;
+}
+.pagination-container__item {
+  font-weight: 500;
+  padding: 12px 18px;
+  
+}
+.pagination-container__item a {
+  color: var(--title-color);
+}
+.next-arrow-background {
+  background-color: var(--next-arrow-background);
+  border-radius: 5px;
+}
