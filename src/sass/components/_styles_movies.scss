@@ -1,0 +1,32 @@
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distribuir el espacio entre las películas */
+  }
+  
+  .movie {
+    margin-top: 80px;
+    width: calc(33.33% - 20px); /* El 20px es el espacio entre las imágenes */
+    text-align: center; /* Centra el contenido de cada película */
+  }
+
+  /* Estilo para las imágenes de las películas */
+  .movie img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0px;
+
+  }
+  
+  /* Estilo para el título de la película */
+  .movie h2 {
+    font-size: 1.2em; 
+
+    text-align: center;
+  }
+  
+  /* Estilo para el género de la película */
+  .movie p {
+    font-size: 1em; 
+    color: #555;
+  }
