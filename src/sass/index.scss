@@ -1,3 +1,31 @@
-@import './common';
-@import './example';
+@import "./base/base";
+@import "./utils/variables";
+@import './components/header';
+@import './components/main';
+@import './components/pagination';
+@import './components/footer';
+@import "./components/styles_movies";
 
+
+.container {
+  margin: 0 auto;
+  padding: 0 16px;
+  width: 1024px;
+}
+
+.active {
+  border-bottom: 3px solid var(--main-button-background);
+}
+
+.button-active {
+  background-color: var(--main-button-background);
+  color: var(--white-color);
+  border-radius: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
