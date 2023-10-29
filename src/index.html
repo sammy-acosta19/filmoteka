@@ -4,12 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Film Trend</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
     <link rel="stylesheet" href="./sass/index.scss" />
     <link rel="shortcut icon" href="./images/filmtrendpng.png" type="image/x-icon">
     <script type="module" src="./index.js"></script>
   </head>
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
+    <div class="container">
+      <header class="flex-header">
+        <a class="" href="./index.html"><svg class="" width="24" height="24">
+            <use href="./images/icoms.svg#icon-film"></use></svg>Filmoteka</a>
+        <nav>
+          <a href="./index.html">HOME</a>
+          <a href="./mylibrary.html">MY LIBRARY</a>
+        </nav>
+      </header>
+       <div>
+          <input type="text" class="" placeholder="Buscar..." >
+         <svg class="" width="12" height="12">
+            <use href="./images/icoms.svg#icon-lupa"></use></svg>
+        </div>
+      <main>
+        <ul>
+        <li>este es el main</li>
+        <li class="agregar-peliculas">en esta parte agregaremos las peliculas </li>
+        <li>con javascript</li>
+        </ul>
+      </main>
+      <section>
+    <div class="pagination">
+    <a href="#">&laquo;</a> 
+    <a href="#">1</a> 
+    <a href="#">2</a> 
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">&raquo;</a> 
+        </div>
+      </section>
+      <footer>
+        <div>
+          <h3>&copy  2020 | All Rights Reserved | Developed with </h3>
+          <a class="" href="./Students.html"><svg class="" width="14" height="12.88">
+            <use href="./images/icoms.svg#icon-corazon"></use></svg>by GoIT Students</a>
+        </div>
+      </footer>
+    </div>
     <include src="./partials/example.html"></include>
+    <script src="./index.js"></script>
   </body>
 </html>
