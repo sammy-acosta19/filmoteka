@@ -1,28 +1,61 @@
-const config = {
-    method: 'GET',
-    headers: {
-        'Authorization' :'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNjJlNjcxZTcyYTMyNzBmNjAwNWE5NTFlMTQ0NDA0YyIsInN1YiI6IjY1MzliYWFkMDkxZTYyMDBhY2JjZmIxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kl2esxdpMndC8Ncdl_j46puXA1C37-yIPMFWbeO-_d4',
-        'accept' : 'application/json'
-    }}
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
+function App() {
+    const API_URL = "https://api.themoviedb.org/3";
+    const API_KEY = "d62e671e72a3270f6005a951e144404c";
+    const IMAGE_PATH = "https://image.tmdb.org/t/p/original";
+    const URL_IMAGE = "https://image.tmdb.org/t/p/original";
 
-// El valor que estara definido en PAGE se utilizara como variable para llamar cuando se este en la primera pagina mostrando las peliculas tendencia del dia//
-let page = 1;
+    // VARIABLES
+    const [movies, setMovies] = useState([]);
+    const [searchKey, setSearchKey] = useState("");
+    const [trailer, setTrailer] = useState(null);
+    const [movie, setMovie] = useState({ title: "Loading Movies" });
+    const [playing, setPlaying] = useState(false);
 
-fetch(`https://api.themoviedb.org/3/trending/all/day?language=en-US`, config)
-.then(response => response.json())
-.then(data => console.log(data))
+    // Peticion Get Api
+    const fetchMovies = async (searchKey) => {
+        const type = searchKey ? "search" : "discover";
+        const response = await axios.get(`${API_URL}/${type}/movie`, {
+            params: {
+                api_key: API_KEY,
+                query: searchKey,
+            },
+        });
 
-//igual como mencione anterior, El valor de search se utilizara para colocarlo en el evento buscar y podra encontrar peliculas por nombre
-let search = "batman";
+        setMovies(response.data.results);
+    };
 
-fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=true&language=en-US&page=1`, config)
-.then(response => response.json())
-.then(data => console.log(data))
+    // Buscar películas
+    useEffect(() => {
+        const searchMovies = (e) => {
+            e.preventDefault();
+            fetchMovies(searchKey);
+        };
+        fetchMovies();
+    }, []);
 
-//igual como mencione anterior, El valor de movieID se utilizara para colocarlo en el evento buscar y podra encontrar peliculas por ID
-let movieId = 123;
+    function mapContainerMovies() {
+        return (
+            <div className="container movies3">
+                <div className="row">
+                    {movies.map((movie) => (
+                        <div key={movie.id} className="col-md-4 mb-3">
+                            <img src={`${URL_IMAGE}${movie.poster_path}`} alt="" height={600} width="100%" />
+                            <h4 className="text-center">{movie.title}</h4>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
 
-fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, config)
-.then(response => response.json())
-.then(data => console.log(data))
+    return (
+        <div>
+            {mapContainerMovies()}
+        </div>
+    );
+}
+
+export default App;
