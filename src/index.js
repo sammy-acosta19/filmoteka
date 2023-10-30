@@ -44,4 +44,27 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchPopularMovies();
   });
   
-  
+
+
+
+// Boton my library 
+const btnMyLibrary = document.querySelector('.my-library-btn');
+const conteinerLibrarySearch = document.querySelector(
+  '.search-container'
+);
+
+btnMyLibrary.addEventListener('click', event => {
+    event.preventDefault();
+    conteinerLibrarySearch.innerHTML = '';
+    const wachedBtn = document.createElement('button');
+    const queveBtn = document.createElement('button');
+    wachedBtn.textContent = 'WATCHED';
+    queveBtn.textContent = 'QUEVE';
+    wachedBtn.classList.add("library-container__button--active");
+    queveBtn.classList.add('library-container__button--transparent');
+    conteinerLibrarySearch.classList.add('library-container__button')
+    conteinerLibrarySearch.append(wachedBtn, queveBtn);
+});
+
+
+
