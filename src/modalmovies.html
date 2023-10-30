@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+  <link rel="stylesheet" href="./sass/index.scss" />
+  <link rel="shortcut icon" href="./images/filmtrendpng.png" type="image/x-icon">
+  <link rel="stylesheet" href="./sass/components/_modal.scss">
+</head>
+<body>
+  <div id="movieModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2 id="movieTitle"></h2>
+      <p id="movieOverview"></p>
+      <button id="addToWatched">Add to Watched</button>
+      <button id="addToQueue">Add to Queue</button>
+    </div>
+  </div>
+
+  <div class="movie-element" data-movie-id="123">
+    <img  alt="Movie 1">
+  </div>
+  <div class="movie-element" data-movie-id="456">
+    <img alt="Movie 2">
+  </div>
+  <script type="module" src="./modalmovies.js"></script>  
+</body>
+</html>
