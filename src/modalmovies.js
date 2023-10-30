@@ -39,4 +39,12 @@ document.getElementById("addToQueue").addEventListener("click", () => {
   queueMovies.push(movieTitle);
   localStorage.setItem("queueMovies", JSON.stringify(queueMovies));
   alert("Película añadida a la Cola.");
-});bu
+});
+
+const movieElements = document.querySelectorAll('.movie-element');
+movieElements.forEach((element) => {
+  element.addEventListener('click', () => {
+    const movieId = element.dataset.movieId;
+    showMovieModal(movieId);
+  });
+});
