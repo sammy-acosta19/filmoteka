@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const API_URL = "https://api.themoviedb.org/3";
     const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   
-    // Elemento donde se mostrarán las películas
     const movieListContainer = document.getElementById("movie-list");
+
   
     // Función para obtener películas populares
     async function fetchPopularMovies() {
@@ -34,9 +34,22 @@ document.addEventListener("DOMContentLoaded", () => {
           movieContainer.appendChild(title);
           movieContainer.appendChild(genre);
           movieListContainer.appendChild(movieContainer);
+
+          movieContainer.addEventListener("click", ()=> {
+            const modal = document.getElementById("movie-modal");
+            const modalTitle = document.getElementById("modal-title");
+            const modalGenre = document.getElementById("modal-genre");
+            const modalOverview = document.getElementById("modal-overview");
+          
+            modalTitle.textContent = movie.title;
+            modalGenre.textContent = `${genreNames}`;
+        
+            modal.style.display = "block";
+          });
+    
         });
       } catch (error) {
-        console.error("Error al obtener películas populares:", error);
+        console.log("Error al obtener películas populares:", error);
       }
     }
   
@@ -44,8 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchPopularMovies();
   });
   
-
-
 
 // Boton my library 
 const btnMyLibrary = document.querySelector('.my-library-btn');
