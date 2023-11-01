@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
   
         // Mostrar las películas populares
         data.results.forEach(async (movie) => {
-          const movieContainer = document.createElement("div");
-          movieContainer.classList.add("movie");
+          const movieContainer = document.getElementById("btn-open-modal");
+
   
           const image = document.createElement("img");
           image.src = IMAGE_BASE_URL + movie.poster_path;
@@ -46,21 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
             addedMovies.add(movie.id);
           }
 
-          movieContainer.addEventListener("click", ()=> {
-            const modal = document.getElementById("movie-modal");
-            const modalTitle = document.getElementById("modal-title");
-            const modalGenre = document.getElementById("modal-genre");
-            const modalOverview = document.getElementById("modal-overview");
-          
-            modalTitle.textContent = movie.title;
-            modalGenre.textContent = `${genreNames}`;
-        
-            modal.style.display = "block";
-          });
-
-          data.results.slice(0, moviesPerPage).forEach(async (movie) => {
-            movieContainer
-        });
     
         });
       } catch (error) {
@@ -124,7 +109,7 @@ function showMovieModal(movieId) {
 
 const config = {
   headers: {
-    'accept': 'application/json', // Cambio aquí
+    'accept': 'application/json',
     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNjJlNjcxZTcyYTMyNzBmNjAwNWE5NTFlMTQ0NDA0YyIsInN1YiI6IjY1MzliYWFkMDkxZTYyMDBhY2JjZmIxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kl2esxdpMndC8Ncdl_j46puXA1C37-yIPMFWbeO-_d4' // Cambio aquí
   }
 };
@@ -139,7 +124,7 @@ function moviesPopularies(){
 }
 
 let search = "batman";
-page = 1; // Cambio aquí
+page = 1;
 fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=${page}`, config) // Cambio aquí
   .then(response => response.json())
   .then(data => console.log(data.results.map(d => d.title + " " + d.release_date)));
@@ -148,3 +133,20 @@ let movieID = 2661;
 fetch(`https://api.themoviedb.org/3/movie/${movieID}`, config)
   .then(response => response.json())
   .then(data => console.log(data));
+
+
+
+
+
+//modal
+const btnAbrirModal = document.getElementById("btn-open-modal");
+const btnCerrarModal = document.getElementById("btn-close-modal");
+const modal = document.querySelector('#modal');
+
+btnAbrirModal.addEventListener('click', () => {
+  modal.showModal();
+});
+
+btnCerrarModal.addEventListener('click', () => {
+  modal.close();
+});
