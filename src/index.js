@@ -5,7 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
   
     const movieListContainer = document.getElementById("movie-list");
 
-  
+    
+    const moviesPerPage = 9; // Cantidad de películas por página
+    let currentPage = 1; // Página actual
+
+    const addedMovies = new Set();
+
     // Función para obtener películas populares
     async function fetchPopularMovies() {
       try {
@@ -34,6 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
           movieContainer.appendChild(title);
           movieContainer.appendChild(genre);
           movieListContainer.appendChild(movieContainer);
+          
+
+          //hacer que no se repitan las peliculas.
+          if (!addedMovies.has(movie.id)) {
+            addedMovies.add(movie.id);
+          }
 
           movieContainer.addEventListener("click", ()=> {
             const modal = document.getElementById("movie-modal");
@@ -46,17 +57,25 @@ document.addEventListener("DOMContentLoaded", () => {
         
             modal.style.display = "block";
           });
+
+          data.results.slice(0, moviesPerPage).forEach(async (movie) => {
+            movieContainer
+        });
     
         });
       } catch (error) {
         console.log("Error al obtener películas populares:", error);
       }
     }
+
+        // Llama a la función para obtener películas populares
+        fetchPopularMovies(currentPage);
+
+        // Agregar botones de paginación
+    });
   
-    // Llama a la función para obtener películas populares
-    fetchPopularMovies();
-  });
-  
+
+
 
 // Boton my library 
 const btnMyLibrary = document.querySelector('.my-library-btn');
@@ -79,3 +98,53 @@ btnMyLibrary.addEventListener('click', event => {
 
 
 
+const apiKey = "d62e671e72a3270f6005a951e144404c"
+function showMovieModal(movieId) {
+  fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const config = {
+  headers: {
+    'accept': 'application/json', // Cambio aquí
+    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkNjJlNjcxZTcyYTMyNzBmNjAwNWE5NTFlMTQ0NDA0YyIsInN1YiI6IjY1MzliYWFkMDkxZTYyMDBhY2JjZmIxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.kl2esxdpMndC8Ncdl_j46puXA1C37-yIPMFWbeO-_d4' // Cambio aquí
+  }
+};
+
+let page = 1;
+
+function moviesPopularies(){
+  fetch(`https://api.themoviedb.org/3/trending/all/day?page=${page}&language=en-US`, config)
+  .then(response => response.json())
+  .then(data => console.log(data));
+  
+}
+
+let search = "batman";
+page = 1; // Cambio aquí
+fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=${page}`, config) // Cambio aquí
+  .then(response => response.json())
+  .then(data => console.log(data.results.map(d => d.title + " " + d.release_date)));
+
+let movieID = 2661;
+fetch(`https://api.themoviedb.org/3/movie/${movieID}`, config)
+  .then(response => response.json())
+  .then(data => console.log(data));
