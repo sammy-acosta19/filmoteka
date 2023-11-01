@@ -1,25 +1,30 @@
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+#modal {
+  width: 882px;
+  height: 568px;
+  background-color: #ffffff;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 40px;
 }
 
-.modal-content {
-  background-color: #fff;
-  margin: 15% auto;
-  padding: 20px;
-  width: 70%;
+.buttom__icon {
+  padding: 9px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.close {
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+.buttom__icon:hover, .buttom__icon:focus {
+  fill: #2196f3;
+}
+
+#btn-close-modal {
+  background-color: white;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  border: none;
   cursor: pointer;
 }
 

@@ -41,19 +41,37 @@
         </div>
       </header>
       <main>
-        <div id="movie-list"></div>
-        <div id="movie-details"></div>
-
-        <div id="movie-modal" class="modal">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modal-title"></h2>
-            <p id="modal-genre"></p>
-            <p id="modal-overview"></p>
-            <button id="addToWatched">Add to Watched</button>
-            <button id="addToQueue">Add to Queue</button>
+        <div id="movie-list">
+          <div class="movie" id="btn-open-modal">
+            <dialog id="modal">
+              <button id="btn-close-modal" type="button">
+                <svg class="buttom__icon">
+                  <use href="./images/icoms.svg#icon-vector"></use>
+                </svg>
+              </button>
+              **imagen de ejemplo**
+              <img
+                src="./images/header-library.png"
+                alt="Primer Miembro del Equipo"
+                width="370px"
+                height="500px"
+              />
+              <p>
+                Vote / Votes: <br>
+                Popularity <br>
+                Original Title <br>
+                Genre <br>
+              </p>
+              <h3>About</h3>
+              <p>descripcion de cada imagen</p>
+              <button id="addToWatched">Add to Watched</button>
+              <button id="addToQueue">Add to Queue</button>
+            </dialog>
+            <div id="movie-details"></div>
           </div>
         </div>
+
+
         
       </main>
       <section class="container">
