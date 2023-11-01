@@ -41,23 +41,31 @@
         </div>
       </header>
       <main>
-        <div id="movie-list" style="display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;"></div>
+        <div id="movie-list"></div>
         <div id="movie-details"></div>
 
-
+        <div id="movie-modal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-genre"></p>
+            <p id="modal-overview"></p>
+            <button id="addToWatched">Add to Watched</button>
+            <button id="addToQueue">Add to Queue</button>
+          </div>
+        </div>
+        
       </main>
       <section class="container">
         <div class="pagination">
           <ul class="pagination-container">
-            <li class="pagination-container__item next-arrow-background"><a href="#">&laquo;</a></li>
+            <li id="prev-page" class="pagination-container__item next-arrow-background"><a href="#">&laquo;</a></li>
             <li class="pagination-container__item"><a href="#">1</a></li>
             <li class="pagination-container__item"><a href="#">2</a></li>
             <li class="pagination-container__item button-active"><a href="#">3</a></li>
             <li class="pagination-container__item"><a href="#">4</a></li>
             <li class="pagination-container__item"><a href="#">5</a></li>
-            <li class="pagination-container__item next-arrow-background"><a href="#">&raquo;</a> </li>
+            <li id="next-page" class="pagination-container__item next-arrow-background"><a href="#">&raquo;</a> </li>
           </ul>
         </div>
       </section>
