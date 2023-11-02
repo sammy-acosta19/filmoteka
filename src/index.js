@@ -8,43 +8,100 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const moviesPerPage = 9; // Cantidad de películas por página
     let currentPage = 1; // Página actual
+  
+    let movieIdCounter = 0;
+    
+    const shownMovies = new Set();
 
-    const addedMovies = new Set();
-
-    // Función para obtener películas populares
     async function fetchPopularMovies() {
       try {
         const response = await fetch(`${API_URL}/movie/popular?api_key=${API_KEY}`);
         const data = await response.json();
   
         // Mostrar las películas populares
-        data.results.forEach(async (movie) => {
-          const movieContainer = document.getElementById("btn-open-modal");
+        data.results.slice(0, moviesPerPage).forEach(async (movie) => {
 
-  
+          const movieContainer = document.createElement("div");
+          movieContainer.id = "btn-open-modal"
+          movieContainer.style.width = "274px"
+          movieContainer.style.height = "480px"
+          movieContainer.style.marginBottom = "-70px"
+          movieContainer.style.marginTop = "100px"
+          movieContainer.style.marginLeft = "40px"
+
+
           const image = document.createElement("img");
           image.src = IMAGE_BASE_URL + movie.poster_path;
           image.alt = movie.title;
+          image.style.borderRadius = "5px"
+
   
           const title = document.createElement("h2");
           title.textContent = movie.title;
-  
+          title.style.color = "black";
+          title.style.fontFamily = "Roboto";
+          title.style.fontWeight = "500px";
+          title.style.fontSize = "15px"
+
+          const divcontainerPreInfo = document.createElement("div")
+          divcontainerPreInfo.style.display = "flex"
+          divcontainerPreInfo.style.justifyContent = "space-betwen"
+
           const genre = document.createElement("p");
           const genresResponse = await fetch(`${API_URL}/movie/${movie.id}?api_key=${API_KEY}`);
           const genresData = await genresResponse.json();
           const genreNames = genresData.genres.map((genre) => genre.name).join(", ");
-          genre.textContent = `${genreNames}`;
-  
+          genre.textContent = `${genreNames}     |`;
+          genre.style.color = "rgba(255, 107, 1, 1)";
+          genre.style.fontFamily = "Roboto";
+          genre.style.fontWeight = "500px";
+          genre.style.fontSize = "15px"
+
+          const releaseYear = document.createElement("p");
+          const releaseDate = new Date(movie.release_date);
+          releaseYear.textContent = `${releaseDate.getFullYear()}`;
+          releaseYear.style.color = "rgba(255, 107, 1, 1)";
+          releaseYear.style.fontFamily = "Roboto";
+          releaseYear.style.fontWeight = "500px";
+          releaseYear.style.fontSize = "15px"
+          releaseYear.style.marginLeft = "5px"
+          releaseYear.style.marginRight = "5px"
+
+          const containerRatingOrange = document.createElement("div");
+          containerRatingOrange.style.backgroundColor = "rgba(255, 107, 1, 1)";
+          containerRatingOrange.style.width = "36px";
+          containerRatingOrange.style.height = "16px";
+          containerRatingOrange.style.borderRadius = "5px";
+          
+          const rating = document.createElement("p");
+          rating.textContent = `${movie.vote_average}`;
+          rating.style.color = "white";
+          rating.style.fontFamily = "Roboto";
+          rating.style.fontWeight = "500px";
+          rating.style.fontSize = "13px"
+          rating.style.textAlign = "center"
+
+          movieListContainer.appendChild(movieContainer)
           movieContainer.appendChild(image);
           movieContainer.appendChild(title);
-          movieContainer.appendChild(genre);
-          movieListContainer.appendChild(movieContainer);
-          
+          movieContainer.appendChild(divcontainerPreInfo)
+          divcontainerPreInfo.appendChild(genre);
+          divcontainerPreInfo.appendChild(releaseYear);
+          divcontainerPreInfo.appendChild(containerRatingOrange)
+          containerRatingOrange.appendChild(rating)
+        
 
-          //hacer que no se repitan las peliculas.
-          if (!addedMovies.has(movie.id)) {
-            addedMovies.add(movie.id);
-          }
+          const btnAbrirModal = movieContainer
+          const btnCerrarModal = document.getElementById("btn-close-modal");
+          const modal = document.querySelector('#modal');
+
+          btnAbrirModal.addEventListener('click', () => {
+            modal.showModal();
+          });
+
+          btnCerrarModal.addEventListener('click', () => {
+            modal.close();
+          }); 
 
     
         });
@@ -52,12 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Error al obtener películas populares:", error);
       }
     }
-
-        // Llama a la función para obtener películas populares
         fetchPopularMovies(currentPage);
 
-        // Agregar botones de paginación
     });
+  
   
 
 
@@ -139,14 +194,3 @@ fetch(`https://api.themoviedb.org/3/movie/${movieID}`, config)
 
 
 //modal
-const btnAbrirModal = document.getElementById("btn-open-modal");
-const btnCerrarModal = document.getElementById("btn-close-modal");
-const modal = document.querySelector('#modal');
-
-btnAbrirModal.addEventListener('click', () => {
-  modal.showModal();
-});
-
-btnCerrarModal.addEventListener('click', () => {
-  modal.close();
-});
