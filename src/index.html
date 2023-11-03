@@ -24,9 +24,9 @@
               <h1>Filmoteka</h1>
             </a>
             <nav class="flex-nav">
-              <ul class="flex-nav__container">
+              <ul class="flex-nav__container ">
                 <li class="active"><a href="./index.html">HOME</a></li>
-                <li><a href="./mylibrary.html">MY LIBRARY</a></li>
+                <li><a href="#" class="my-library-btn active">MY LIBRARY</a></li>
               </ul>
             </nav>
           </div>
@@ -41,21 +41,55 @@
         </div>
       </header>
       <main>
+<<<<<<< HEAD
         <div id="movie-list" style="display: flex;
     flex-wrap: wrap;
     justify-content: space-between;"></div>
         <div id="movie-details"></div>
+=======
+        <div id="movie-list">
+            <dialog id="modal">
+              <button id="btn-close-modal" type="button">
+                <svg class="buttom__icon">
+                  <use href="./images/icoms.svg#icon-vector"></use>
+                </svg>
+              </button>
+              **imagen de ejemplo**
+              <img
+                src="./images/header-library.png"
+                alt="Primer Miembro del Equipo"
+                width="370px"
+                height="500px"
+              />
+              <p>
+                Vote / Votes: <br>
+                Popularity <br>
+                Original Title <br>
+                Genre <br>
+              </p>
+              <h3>About</h3>
+              <p>descripcion de cada imagen</p>
+              <button id="addToWatched">Add to Watched</button>
+              <button id="addToQueue">Add to Queue</button>
+            </dialog>
+            <div id="movie-details"></div>
+          </div>
+        </div>
+
+
+        
+>>>>>>> d3b1314b9fb1be1abc8329b7b2b190db536e360c
       </main>
       <section class="container">
         <div class="pagination">
           <ul class="pagination-container">
-            <li class="pagination-container__item next-arrow-background"><a href="#">&laquo;</a></li>
+            <li id="prev-page" class="pagination-container__item next-arrow-background"><a href="#">&laquo;</a></li>
             <li class="pagination-container__item"><a href="#">1</a></li>
             <li class="pagination-container__item"><a href="#">2</a></li>
             <li class="pagination-container__item button-active"><a href="#">3</a></li>
             <li class="pagination-container__item"><a href="#">4</a></li>
             <li class="pagination-container__item"><a href="#">5</a></li>
-            <li class="pagination-container__item next-arrow-background"><a href="#">&raquo;</a> </li>
+            <li id="next-page" class="pagination-container__item next-arrow-background"><a href="#">&raquo;</a> </li>
           </ul>
         </div>
       </section>
@@ -72,7 +106,6 @@
         </div>
       </footer>
     </div>
-
     <script src="./index.js"></script>
   </body>
 </html>
