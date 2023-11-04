@@ -1,4 +1,4 @@
-const apiKey = "d62e671e72a3270f6005a951e144404c"
+/*const apiKey = "d62e671e72a3270f6005a951e144404c"
 function showMovieModal(movieId) {
   fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
     .then((response) => response.json())
@@ -47,4 +47,4 @@ movieElements.forEach((element) => {
     const movieId = element.dataset.movieId;
     showMovieModal(movieId);
   });
-});
+});*/
