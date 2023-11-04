@@ -5,15 +5,23 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Elemento donde se mostrarán las películas
     const movieListContainer = document.getElementById("movie-list");
+    const paginationNumbers = document.getElementById("pagination-numbers");
+    let currentPage = 1;
+
+    const moviesPerPage = 9;
   
     // Función para obtener películas populares
-    async function fetchPopularMovies() {
+    async function fetchPopularMovies(page) {
       try {
         const response = await fetch(`${API_URL}/movie/popular?api_key=${API_KEY}`);
         const data = await response.json();
+        movieListContainer.innerHTML = "";
+
+        const startIndex = (page - 1) * moviesPerPage;
+        const endIndex = startIndex + moviesPerPage;
   
         // Mostrar las películas populares
-        data.results.forEach(async (movie) => {
+        data.results.slice(startIndex, endIndex).forEach(async (movie) => {
           const movieContainer = document.createElement("div");
           movieContainer.classList.add("movie");
   
@@ -35,13 +43,52 @@ document.addEventListener("DOMContentLoaded", () => {
           movieContainer.appendChild(genre);
           movieListContainer.appendChild(movieContainer);
         });
+
+        paginationNumbers.innerHTML = "";
+        const totalPages = Math.ceil(data.results.length / moviesPerPage);
+        const maxPages = Math.min(totalPages, 20);
+  
+        for (let i = 1; i <= maxPages; i++) {
+          const button = document.createElement("button");
+          button.classList.add("pagination-number");
+          button.textContent = i;
+          if (i === currentPage) {
+            button.classList.add("active");
+          }
+          button.addEventListener("click", () => {
+            currentPage = i;
+            fetchPopularMovies(currentPage);
+          });
+          paginationNumbers.appendChild(button);
+        }
+  
+        if (totalPages > 20) {
+          const dots = document.createElement("span");
+          dots.textContent = "...";
+          paginationNumbers.appendChild(dots);
+        }
       } catch (error) {
         console.error("Error al obtener películas populares:", error);
       }
     }
   
     // Llama a la función para obtener películas populares
-    fetchPopularMovies();
+    fetchPopularMovies(currentPage);
+
+    const prevButton = document.getElementById("prev-button");
+    const nextButton = document.getElementById("next-button");
+
+    prevButton.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      fetchPopularMovies(currentPage);
+      }
+    });
+
+    nextButton.addEventListener("click", () => {
+      currentPage++;
+      fetchPopularMovies(currentPage);
+    });
   });
   
 
