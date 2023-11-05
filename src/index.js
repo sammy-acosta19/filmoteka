@@ -359,7 +359,6 @@ btnMyLibrary.addEventListener('click', event => {
     }
   
     fetchPopularMovies(currentPage);
-  });
   
 
 const config = {
