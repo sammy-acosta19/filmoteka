@@ -1,0 +1,122 @@
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(0, 10px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+.STUDENT {
+  background: linear-gradient(to bottom, red, blue, black);
+  height: 100vh;
+  margin: 0;
+}
+
+
+header {
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    animation: fadeIn 1.5s ease-in;
+}
+
+h1 {
+    font-family: Black Ops One, sans-serif;
+    font-size: 36px;
+}
+
+.container-student {
+    background: linear-gradient(to bottom, white, grey, white, grey);
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.5s ease-in;
+}
+
+.team-member {
+    margin: 20px 0;
+    animation: fadeIn 1.5s ease-in;
+    text-align: center;
+     margin: 20px 0;
+    animation: fadeIn 1.5s ease-in;
+    display: flex;
+}
+
+.team-member h2 {
+    font-size: 24px;
+}
+
+.team-member p {
+    font-size: 18px;
+}
+
+.team-member img {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-student {
+   height: 10%;
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+.img-student:hover {
+    transform: rotate(360deg); 
+}
+
+.home-student {
+    font-family: Black Ops One, sans-serif;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+    background-color: black; 
+}
+
+.home-student:hover {
+    transform: rotateY(50deg);
+}
+
+
+.left-panel {
+    flex: 1; /* Para que ocupe el 50% del ancho y contenga la imagen */
+    text-align: center; 
+}
+
+.right-panel {
+    background-color: var(--title-color);
+    flex: 2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.team-member h2 {
+    font-size: 24px;
+    transition: transform 0.3s; 
+}
+
+.team-member h2:hover {
+    transform: scale(1.2); 
+}
+
+h2 {
+    font-family: Black Ops One, sans-serif;
+    color: var(--white-color);
+}
+
+p {
+    color: var(--white-color);
+}
+
+
