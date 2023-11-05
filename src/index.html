@@ -42,36 +42,36 @@
       </header>
       <main>
         <div id="movie-list">
-            <dialog id="modal">
-              <button id="btn-close-modal" type="button">
-                <svg class="buttom__icon">
-                  <use href="./images/icoms.svg#icon-vector"></use>
-                </svg>
-              </button>
-              **imagen de ejemplo**
-              <img
-                src="./images/header-library.png"
-                alt="Primer Miembro del Equipo"
-                width="370px"
-                height="500px"
-              />
-              <p>
-                Vote / Votes: <br>
-                Popularity <br>
-                Original Title <br>
-                Genre <br>
-              </p>
-              <h3>About</h3>
-              <p>descripcion de cada imagen</p>
-              <button id="addToWatched">Add to Watched</button>
-              <button id="addToQueue">Add to Queue</button>
-            </dialog>
-            <div id="movie-details"></div>
-          </div>
+          <dialog id="modal">
+            <button id="btn-close-modal" type="button">
+              <svg class="buttom__icon">
+                <use href="./images/icoms.svg#icon-vector"></use>
+              </svg>
+            </button>
+            <div id="add-movies-modal">
+              <div class="contenedor-add-modal-1">
+              </div>
+              <div class="contenedor-add-modal-2">
+                <h2 class="title-description-movies"></h2>
+                <div class="container-preInfo-clave">
+                  <p class="preinfo-clave description-movies-clave">Vote/Votes</p>
+                  <p class="preinfo-clave description-movies-clave">popularity</p>
+                  <p class="preinfo-clave description-movies-clave">Original Title</p>
+                  <p class="preinfo-clave description-movies-clave">Genre</p>
+                </div>
+                <div class="container-preInfo-valor">
+                </div>
+                <p class="description">
+                </p>
+                <div>
+                  <button id="addToWatched">Add to Watched</button>
+                  <button id="addToQueue">Add to Queue</button>
+                </div>
+              </div>
+            </div>
+          </dialog>
+          <div id="movie-details"></div>
         </div>
-
-
-        
       </main>
       <section class="container">
         <div class="pagination">
@@ -80,15 +80,6 @@
             <div id="pagination-numbers"></div>
             <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page">&raquo</button>
           </nav>
-          <ul class="pagination-container">
-            <li id="prev-page" class="pagination-container__item next-arrow-background"><a href="#">&laquo;</a></li>
-            <li class="pagination-container__item"><a href="#">1</a></li>
-            <li class="pagination-container__item"><a href="#">2</a></li>
-            <li class="pagination-container__item button-active"><a href="#">3</a></li>
-            <li class="pagination-container__item"><a href="#">4</a></li>
-            <li class="pagination-container__item"><a href="#">5</a></li>
-            <li id="next-page" class="pagination-container__item next-arrow-background"><a href="#">&raquo;</a> </li>
-          </ul>
         </div>
       </section>
       <footer class="footer-container">
@@ -97,7 +88,7 @@
           <a class="footer-link" href="./index.html">
             <svg class="footer-link__svg" width="14" height="12.88">
               <use href="./images/icoms.svg#icon-corazon"></use>
-            </svg>by<span> GoIT Students</span> 
+            </svg>
           </a>
           <a class="" href="./Students.html"><svg class="" width="14" height="12.88">
             <use href="./images/icoms.svg#icon-corazon"></use></svg>by GoIT Students</a>
