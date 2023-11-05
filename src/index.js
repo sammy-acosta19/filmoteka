@@ -1,16 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const API_KEY = "d62e671e72a3270f6005a951e144404c"; // Reemplaza con tu clave de API de TMDb
+    const API_KEY = "d62e671e72a3270f6005a951e144404c";
     const API_URL = "https://api.themoviedb.org/3";
     const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
   
-    // Elemento donde se mostrarán las películas
     const movieListContainer = document.getElementById("movie-list");
     const paginationNumbers = document.getElementById("pagination-numbers");
     let currentPage = 1;
 
     const moviesPerPage = 9;
   
-    // Función para obtener películas populares
     async function fetchPopularMovies(page) {
       try {
         const response = await fetch(`${API_URL}/movie/popular?api_key=${API_KEY}`);
@@ -96,30 +94,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
           btnAbrirModal.addEventListener('click', () => {
             modal.showModal();
-          
             const agregarHtmlModal = document.getElementById("add-movies-modal");
-          
             const movieId = movie.id;
             const movieDetailsUrl = `${API_URL}/movie/${movieId}?api_key=${API_KEY}`;
           
             fetch(movieDetailsUrl)
               .then(response => response.json())
               .then(data => {
-                const contenedorAddModal1 = document.querySelector(".contenedor-add-modal-1");
-                contenedorAddModal1.innerHTML = '';
 
+                const titleModal = document.querySelector(".title-description-movies")
+                titleModal.textContent = data.original_title;
+
+                const contenedorAddModal1 = agregarHtmlModal.querySelector(".contenedor-add-modal-1");
+                contenedorAddModal1.innerHTML = '';
+          
                 const imagePathModal = document.createElement("img");
                 imagePathModal.src = IMAGE_BASE_URL + data.poster_path;
                 imagePathModal.alt = data.title;
+                imagePathModal.style.width = "600px"
+                imagePathModal.style.height = "780px"
+                imagePathModal.style.justifyContent = "center";
+                imagePathModal.style.alignItems = "center";
+                imagePathModal.style.borderRadius = "10px"
                 contenedorAddModal1.appendChild(imagePathModal);
+        
+          
+                const addPreInfoValor = agregarHtmlModal.querySelector(".container-preInfo-valor");
+                addPreInfoValor.innerHTML = `
+                  <div class="contenedor-rating">
+                  <p class="preinfo-valor rating-valor">${data.vote_average} </p>
+                  <p class="rating-valor2">/ ${data.vote_count}</p>
+                  </div>
+                  <p class="preinfo-valor">${data.popularity}</p>
+                  <p class="preinfo-valor">${data.original_title}</p>
+                  <p class="preinfo-valor">${data.genres.map(genre => genre.name).join(", ")}</p>`;
 
-                const addPreInfoValor = document.querySelector(".container-preInfo-valor");
-                addPreInfoValor.innerHTML = `<p class="preinfo-valor-1 description-movies-valor">${data.vote_average}/${data.vote_count}</p>
-                  <p class="preinfo-valor-2 description-movies-valor">${data.popularity}</p>
-                  <p class="preinfo-valor-3 description-movies-valor">${data.original_title}</p>
-                  <p class="preinfo-valor-4 description-movies-valor">${data.genres.map(genre => genre.name).join(", ")}</p>`;
-                  
-                const descriptionModal = document.querySelector(".description");
+                const descriptionModal = agregarHtmlModal.querySelector(".description");
                 descriptionModal.textContent = data.overview;
               });
           });
@@ -177,8 +187,23 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchPopularMovies(currentPage);
   });
   
-
-
+  const btnMyLibrary = document.querySelector('.my-library-btn');
+  const conteinerLibrarySearch = document.querySelector(
+    '.search-container'
+  );
+  
+  btnMyLibrary.addEventListener('click', event => {
+      event.preventDefault();
+      conteinerLibrarySearch.innerHTML = '';
+      const wachedBtn = document.createElement('button');
+      const queveBtn = document.createElement('button');
+      wachedBtn.textContent = 'WATCHED';
+      queveBtn.textContent = 'QUEVE';
+      wachedBtn.classList.add("library-container__button--active");
+      queveBtn.classList.add('library-container__button--transparent');
+      conteinerLibrarySearch.classList.add('library-container__button')
+      conteinerLibrarySearch.append(wachedBtn, queveBtn);
+  });
 
 
 const config = {
@@ -188,7 +213,7 @@ const config = {
   }
 };
 
-let page = 20;
+let page = 1;
 
 function moviesPopularies(){
   fetch(`https://api.themoviedb.org/3/trending/all/day?page=${page}&language=en-US`, config)
@@ -197,7 +222,7 @@ function moviesPopularies(){
   
 }
 
-let search = "batman";
+/*let search = "batman";
 page = 1;
 fetch(`https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=${page}`, config) // Cambio aquí
   .then(response => response.json())
@@ -207,3 +232,4 @@ let movieID = 2661;
 fetch(`https://api.themoviedb.org/3/movie/${movieID}`, config)
   .then(response => response.json())
   .then(data => console.log(data));
+*/
