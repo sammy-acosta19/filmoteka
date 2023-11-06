@@ -10,7 +10,6 @@ async function atributosMovies(movie, API_URL, API_KEY, IMAGE_BASE_URL, movieLis
     movieContainer.style.transition = "transform 0.3s ease-in-out";
     movieContainer.addEventListener("mouseenter", () => {
       movieContainer.style.transform = "scale(0.9)";
-      //hola
     });
     
     movieContainer.addEventListener("mouseleave", () => {
