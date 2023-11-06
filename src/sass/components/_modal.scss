@@ -1,5 +1,130 @@
+
+
+#add-movies-modal {
+display: flex;
+gap: 60px;
+}
+
+.title-description-movies {
+font-family: 'Roboto', sans-serif;
+width: 650px;
+font-size: 50px;
+font-weight: 500;
+line-height: 35px;
+letter-spacing: 0em;
+text-align: left;
+margin-bottom: 35px;
+margin-top: 5px;
+line-height: 1;
+}
+
+.contenedor-dentro-pre-info {
+display: flex;
+}
+
+.preinfo-clave {
+margin-bottom: 25px;
+}
+
+.preinfo-valor {
+margin-top: 0px;
+margin-left: 100px;
+margin-bottom: 22px;
+font-family: Roboto;
+font-size: 18px;
+font-weight: 500;
+line-height: 18px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.container-preInfo-clave {
+color: rgba(140, 140, 140, 1);
+font-family: Roboto;
+font-size: 18px;
+font-weight: 500;
+line-height: 16px;
+letter-spacing: 0em;
+text-align: left;
+}
+
+.description {
+width: 650px;
+color: black;
+font-family: Roboto;
+font-size: 18px;
+font-weight: 500;
+line-height: 28px;
+letter-spacing: 0em;
+text-align: left;
+margin-bottom: 20px;
+}
+
+.container-preInfo-valor {
+color: black;
+}
+
+.contenedor-rating {
+display: flex;
+}
+
+.date-average {
+  background-color: orangered;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+
+.rating-valor {
+justify-content: center;
+align-items: center;
+background-color: orange;
+width: 50px;
+height: 20px;
+border-radius: 5px;
+text-align: center;
+}
+
+.rating-valor2 {
+margin-top: 8px;
+margin-left: 10px;
+font-family: Roboto;
+font-size: 18px;
+font-weight: 500;
+line-height: 16px;
+letter-spacing: 0em;
+text-align: left;
+}
+
+.contenedor-add-modal-1 {
+  padding: auto;
+  }
+
+.contenedor-add-modal-2 {
+margin-left: px;
+color: black;
+}
+
+.container-preInfo-valor{
+color: black;
+}
+
+.about-modal {
+margin-top: 25px;
+margin-bottom: 15px;
+font-family: Roboto;
+font-size: 18px;
+font-weight: 500;
+line-height: 16px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
 #modal {
-  width: 75%;
+  width: 80%;
   height: 90%;
   border-radius: 10px;
   padding: 40px;
@@ -12,7 +137,6 @@
   justify-content: center;
   padding-right: 40px;
 }
-
 
 
 .buttom__icon {
