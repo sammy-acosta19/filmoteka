@@ -227,7 +227,6 @@ btnMyLibrary.addEventListener('click', event => {
   containerLibrarySearch.append(watchedBtn, queueBtn);
 });
 
-
 //BUSQUEDA DE PELICUALS POR NOMBRE
 
 const searchInputBusqueda = document.getElementById("search-input");
@@ -332,7 +331,6 @@ async function searchMoviesByTitle(searchTerm) {
     console.error("Error al buscar películas por título:", error);
   }
 }
-
 
 const config = {
 headers: {
