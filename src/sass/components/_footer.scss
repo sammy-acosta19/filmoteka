@@ -7,6 +7,7 @@
 
 .footer-container__flex {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   column-gap: 10px;
 }
@@ -23,4 +24,3 @@
 .footer-link__svg {
   margin-right: 10px;
 }
-
